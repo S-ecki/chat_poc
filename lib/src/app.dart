@@ -8,12 +8,16 @@ import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 import 'components/channel_page.dart';
 
 class MyApp extends StatelessWidget {
-  const MyApp({
+  MyApp({
     required this.chatService,
     Key? key,
   }) : super(key: key);
 
   final ChatService chatService;
+
+  final theme = ThemeData(
+    primarySwatch: Colors.pink,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +38,7 @@ class MyApp extends StatelessWidget {
         return StreamChat(
           client: chatService.client,
           child: widget,
+          streamChatThemeData: StreamChatThemeData.fromTheme(theme),
         );
       },
       home: StreamChannel(
